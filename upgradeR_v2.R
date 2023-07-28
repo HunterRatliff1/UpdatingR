@@ -59,7 +59,7 @@ installedPreviously <- rstudioapi::selectFile() %>%
 # If there are packages you don't want to use, mark `keep`
 # as false
 
-## First make a list of all CRAN packages
+## First make a list of all  packages
 prior_pkgs <- installedPreviously %>%
   filter(keep) %>%
   # filter(pkg_source=="CRAN") %>%
@@ -127,7 +127,8 @@ filter(github_pkgs, package %in% intersect(
 
 
 # Still missing
-whats_left(installedPreviously$package)
+whats_left(installedPreviously$package) %>%
+  install.packages()
 
 #========================#
 ####   KNOWN ISSUES   ####
@@ -144,7 +145,7 @@ devtools::install_github("vdorie/bartCause")
 
 
 # ## Need github install
-# devtools::install_github("ajdamico/lodown") 
+# devtools::install_github("ajdamico/lodown")
 # devtools::install_github("sachsmc/rclinicaltrials")
 # devtools::install_github("briatte/ggnet")
 # 
@@ -160,6 +161,7 @@ devtools::install_github("vdorie/bartCause")
 
 # Find the path using...
 R.home("etc")
+# usethis::edit_r_environ()
 
 # As of my upgrade to v4.2, I haven't had to update these values
 
